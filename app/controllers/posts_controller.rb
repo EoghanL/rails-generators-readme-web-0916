@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(params)
+    params.update(post_status: true) if params[post_status] == "t"
     @post.save
     redirect_to post_path(@post)
   end
